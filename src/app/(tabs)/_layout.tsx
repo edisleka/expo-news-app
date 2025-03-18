@@ -1,13 +1,12 @@
 import { Tabs } from 'expo-router'
-import { View, Text } from 'react-native'
 import { MaterialCommunityIcons, Entypo } from '@expo/vector-icons'
 
 export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: 'black',
-        // tabBarInactiveTintColor: 'green',
+        tabBarActiveTintColor: 'red',
+        tabBarInactiveTintColor: 'green',
         headerShown: false,
       }}
     >
