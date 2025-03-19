@@ -1,7 +1,6 @@
 import { View, Text, Image } from 'react-native'
-import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { formatDistanceToNow } from 'date-fns'
 import { News } from '@/types/types'
+import NewsListItemFooter from '@/components/NewsListItemFooter'
 
 interface NewsListItemProps {
   newsArticle: News
@@ -41,19 +40,10 @@ export default function NewsListItem({ newsArticle }: NewsListItemProps) {
         />
       </View>
 
-      <View style={{ flexDirection: 'row', gap: 5 }}>
-        <Text>
-          {formatDistanceToNow(newsArticle.created_at, { addSuffix: true })}
-        </Text>
-        <Text>&#x2022;</Text>
-        <Text>{newsArticle.author.name}</Text>
-        <MaterialCommunityIcons
-          name='dots-horizontal'
-          size={22}
-          color='grey'
-          style={{ marginLeft: 'auto' }}
-        />
-      </View>
+      <NewsListItemFooter
+        publishedDate={newsArticle.created_at}
+        author={newsArticle.author}
+      />
     </View>
   )
 }
