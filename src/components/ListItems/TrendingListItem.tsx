@@ -14,8 +14,8 @@ export default function TrendingListItem({
       <View style={styles.bubbleContainer}>
         <Text style={styles.bubbleText}>1</Text>
       </View>
-      <View style={{ gap: 25 }}>
-        <View>
+      <View style={styles.textContainer}>
+        <View style={{ gap: 5 }}>
           <Image
             source={require('@assets/black-logo.png')}
             style={{ width: 50, height: 20 }}
@@ -48,5 +48,12 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  textContainer: {
+    gap: 25,
+    flex: 1,
+    borderBottomWidth: 0.5,
+    borderBottomColor: 'lightgrey',
+    paddingBottom: 10,
   },
 })

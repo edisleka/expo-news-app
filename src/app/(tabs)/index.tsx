@@ -57,7 +57,7 @@ export default function HomeScreen() {
     <SafeAreaView style={{ margin: 15 }}>
       <SectionList
         sections={homeNews}
-        renderItem={({ item }) => <TrendingListItem newsArticle={item} />}
+        renderItem={({ item }) => <NewsListItem newsArticle={item} />}
         renderSectionHeader={({ section }) =>
           renderSectionHeader(section?.title)
         }

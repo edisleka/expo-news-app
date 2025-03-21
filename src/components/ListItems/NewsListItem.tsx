@@ -13,8 +13,8 @@ export default function NewsListItem({ newsArticle }: NewsListItemProps) {
         backgroundColor: 'white',
         padding: 10,
         gap: 10,
-        margin: 10,
         borderRadius: 10,
+        marginBottom: 15,
       }}
     >
       <View style={{ flexDirection: 'row' }}>
