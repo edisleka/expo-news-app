@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import homeNews from '@assets/data/homeNews.json'
 import MainNewsCard from '@/components/ListItems/MainNewsCard'
 import TrendingListItem from '@/components/ListItems/TrendingListItem'
+import { AntDesign } from '@expo/vector-icons'
 
 const TITLES = {
   TOP_STORIES: 'Top Stories',
@@ -13,6 +14,9 @@ const TITLES = {
 }
 
 export default function HomeScreen() {
+  const date = new Date()
+  console.log(date)
+
   const renderSectionHeader = (title: string) => {
     if (title === TITLES.TOP_STORIES) {
       return (
@@ -57,12 +61,48 @@ export default function HomeScreen() {
     <SafeAreaView style={{ margin: 15 }}>
       <SectionList
         sections={homeNews}
-        renderItem={({ item }) => <NewsListItem newsArticle={item} />}
+        renderItem={({ item, index, section }) => {
+          switch (section.title) {
+            case TITLES.TOP_STORIES:
+              return index === 0 ? (
+                <MainNewsCard newsArticle={item} />
+              ) : (
+                <NewsListItem newsArticle={item} />
+              )
+            case TITLES.TRENDING:
+              return <TrendingListItem newsArticle={item} index={index + 1} />
+            case TITLES.FOR_YOU:
+              return <NewsListItem newsArticle={item} />
+            default:
+              return null
+          }
+        }}
         renderSectionHeader={({ section }) =>
           renderSectionHeader(section?.title)
         }
         stickySectionHeadersEnabled={false}
         showsVerticalScrollIndicator={false}
+        ListHeaderComponent={
+          <View style={{}}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                // backgroundColor: 'blue',
+                justifyContent: 'flex-start',
+              }}
+            >
+              <AntDesign name='apple1' size={24} color='black' />
+              <Text style={{ fontSize: 27, fontWeight: '800' }}>News</Text>
+            </View>
+            <Text style={{ fontSize: 27, fontWeight: '800', color: 'gray' }}>
+              {date.toLocaleString('default', {
+                day: 'numeric',
+                month: 'long',
+              })}
+            </Text>
+          </View>
+        }
       />
     </SafeAreaView>
   )

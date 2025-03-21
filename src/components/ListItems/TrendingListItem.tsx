@@ -4,15 +4,17 @@ import NewsListItemFooter from '../NewsListItemFooter'
 
 interface TrendingListItemProps {
   newsArticle: News
+  index: number
 }
 
 export default function TrendingListItem({
   newsArticle,
+  index,
 }: TrendingListItemProps) {
   return (
     <View style={{ flexDirection: 'row', marginBottom: 20, gap: 15 }}>
       <View style={styles.bubbleContainer}>
-        <Text style={styles.bubbleText}>1</Text>
+        <Text style={styles.bubbleText}>{index}</Text>
       </View>
       <View style={styles.textContainer}>
         <View style={{ gap: 5 }}>
